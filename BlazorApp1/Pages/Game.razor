@@ -1,0 +1,162 @@
+﻿@page "/game"
+@inject HttpClient Http
+
+<h1>Artist Face Off</h1>
+
+@if (data1 == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <div>
+        <label for="artist1">Artist 1</label>
+        <input id="artist1" @bind="artist1" />
+        <p></p>
+    </div>
+    <div>
+        <label for="artist2">Artist 2</label>
+        <input id="artist2" @bind="artist2" />
+        <p></p>
+    </div>
+    <div>
+        <button @onclick="Lookup">Lookup</button>
+    </div>
+    <br />
+
+    @if (found)
+    {
+        <div>
+            Artist Name: @(winner)
+        </div>
+    }  
+}
+
+
+@errormessage
+
+
+@code {
+    private String artist1 = "Nine Inch Nails";
+    private String artist2 = "Incubus";
+    private bool found;
+    private String winner = "";
+
+    private Root data1;
+    private Root data2;
+    private string errormessage;
+
+    private async Task GetArtistAsync()
+    {
+        try
+        {
+            string url1 = "http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=" + artist1 + "&api_key=e53ad041fac5d3189f2e8dffe9b6978a&format=json";
+            string url2 = "http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=" + artist2+ "&api_key=e53ad041fac5d3189f2e8dffe9b6978a&format=json";
+            data1 = await Http.GetFromJsonAsync<Root>(url1);
+            data2 = await Http.GetFromJsonAsync<Root>(url2);
+            found = true;
+            errormessage = String.Empty;
+            int x = Int32.Parse(data1.artist.stats.playcount);
+            int y = Int32.Parse(data2.artist.stats.playcount);
+
+            if ( x > y )
+            {
+                winner = artist1;
+            }
+            else
+            {
+                winner = artist2;
+            }
+
+        }
+        catch (Exception e)
+        {
+            found = false;
+            errormessage = e.Message;
+        }
+    }
+
+    //lifecycle method
+
+    protected override async Task OnInitializedAsync()
+    {
+        await GetArtistAsync();
+    }
+
+    //lookup
+    public async void Lookup()
+    {
+        await GetArtistAsync();
+        StateHasChanged();
+    }
+
+
+    public class Image
+    {
+        public string text { get; set; }
+        public string size { get; set; }
+    }
+
+    public class Stats
+    {
+        public string listeners { get; set; }
+        public string playcount { get; set; }
+    }
+
+    public class Similar
+    {
+        public IList<Artist> artist { get; set; }
+    }
+
+    public class Tag
+    {
+        public string name { get; set; }
+        public string url { get; set; }
+    }
+
+    public class Tags
+    {
+        public IList<Tag> tag { get; set; }
+    }
+
+    public class Link
+    {
+        public string text { get; set; }
+        public string rel { get; set; }
+        public string href { get; set; }
+    }
+
+    public class Links
+    {
+        public Link link { get; set; }
+    }
+
+    public class Bio
+    {
+        public Links links { get; set; }
+        public string published { get; set; }
+        public string summary { get; set; }
+        public string content { get; set; }
+    }
+
+    public class Artist
+    {
+        public string name { get; set; }
+        public string mbid { get; set; }
+        public string url { get; set; }
+        public IList<Image> image { get; set; }
+        public string streamable { get; set; }
+        public string ontour { get; set; }
+        public Stats stats { get; set; }
+        public Similar similar { get; set; }
+        public Tags tags { get; set; }
+        public Bio bio { get; set; }
+    }
+
+    public class Root
+    {
+        public Artist artist { get; set; }
+    }
+
+
+}

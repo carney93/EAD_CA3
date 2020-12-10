@@ -1,0 +1,278 @@
+﻿@page "/searchartist"
+@inject HttpClient Http
+@using System.Runtime.Serialization;
+@using System.Collections;
+@using System.Collections.Generic;
+
+
+
+@if (data == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <div>
+        <label for="artist">Search For Artist</label>
+        <input id="artist" @bind="artist" />
+        <button @onclick="Lookup">
+            <span class="oi oi-magnifying-glass"></span>
+        </button>
+        <p></p>
+    </div>
+    <br />
+
+    @if (found)
+    {
+
+        <h1> @(data.artist.name) </h1>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Click to view full Bio</button>
+
+        <br />
+        <br />
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+
+                    <p>@(data.artist.bio.summary)</p>
+
+                </div>
+                <div class="col-sm">
+                    <img src="https://blueskyletters.com/uploads/pien-muller-Fh-Q-xfdh_o-unsplash.jpg" alt="Image" asp-append-version="true" width="400px" />
+                </div>
+            </div>
+            <br />
+            <br />
+
+            <div class="row">
+                <div class="col-sm-5">
+                    <h2>Releases</h2> <button @onclick="sort"><span class="oi oi-sort-ascending"></span></button>
+    <table class="table">
+        <tbody>
+
+            @foreach (Object obj in artistAlbums)
+            {
+                <tr>
+                    <th scope="row"></th>
+                    <td>@obj</td>
+
+                </tr>
+            }
+
+        </tbody>
+    </table>
+
+</div>
+                <div class="col-sm-1">
+                </div>
+                <div class="col-sm-6">
+                    <h2>Similar Artists</h2>
+
+                    <table class="table">
+                        <tbody>
+
+                            @for (int i = 0; i < noSimilarArtists; i++)
+                            {
+                            <tr>
+                                <th scope="row"></th>
+
+                                @{similarArtists.Add(@data.artist.similar.artist[i].name);}
+                                @{int j = i;}
+                                <button @onclick="@(e => goToSimilarArtist(j))">@(data.artist.similar.artist[i].name)</button>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+        </div>
+
+    }
+}
+
+@errormessage
+
+
+@code {
+    private String artist = "Nine Inch Nails";
+    private bool found;
+    private Root data;
+    private Application data1;
+    private string errormessage;
+    List<string> similarArtists = new List<string>();
+
+    private int noAlbums;
+    ArrayList artistAlbums = new ArrayList();
+    private int noSimilarArtists;
+
+
+
+    private async Task GetArtistAsync()
+    {
+        try
+        {
+            string url = "http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=" + artist + "&api_key=e53ad041fac5d3189f2e8dffe9b6978a&format=json";
+            data = await Http.GetFromJsonAsync<Root>(url);
+
+            string url1 = "http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=" + artist + "&api_key=e53ad041fac5d3189f2e8dffe9b6978a&format=json";
+            data1 = await Http.GetFromJsonAsync<Application>(url1);
+
+            noAlbums = data1.topalbums.album.Count;
+            noSimilarArtists = data.artist.similar.artist.Count;
+
+            artistAlbums.Clear();
+            similarArtists.Clear();
+
+            @for (int i = 0; i < noAlbums; i++)
+            {
+                artistAlbums.Add(data1.topalbums.album[i].name);
+
+            }
+
+            found = true;
+            errormessage = String.Empty;
+        }
+        catch (Exception e)
+        {
+            found = false;
+            errormessage = e.Message;
+        }
+    }
+
+    //lifecycle method
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        await GetArtistAsync();
+    }
+
+    //sort release list by alphabet
+    public void sort()
+    {
+        artistAlbums.Sort();
+    }
+
+    //lookup
+    public async void Lookup()
+    {
+        await GetArtistAsync();
+        StateHasChanged();
+    }
+
+    public async void goToSimilarArtist(int loc)
+    {
+        artist = similarArtists[loc];
+        await GetArtistAsync();
+        StateHasChanged();
+    }
+
+
+    [DataContract]
+    public class Image
+    {
+        [DataMember(Name = "#text")]
+        public string text { get; set; }
+        public string size { get; set; }
+    }
+
+    public class Stats
+    {
+        public string listeners { get; set; }
+        public string playcount { get; set; }
+    }
+
+    public class Similar
+    {
+        public IList<Artist> artist { get; set; }
+    }
+
+    public class Tag
+    {
+        public string name { get; set; }
+        public string url { get; set; }
+    }
+
+    public class Tags
+    {
+        public IList<Tag> tag { get; set; }
+    }
+
+    [DataContract]
+    public class Link
+    {
+        [DataMember(Name = "#text")]
+        public string text { get; set; }
+        public string rel { get; set; }
+        public string href { get; set; }
+    }
+
+    public class Links
+    {
+        public Link link { get; set; }
+    }
+
+    public class Bio
+    {
+        public Links links { get; set; }
+        public string published { get; set; }
+        public string summary { get; set; }
+        public string content { get; set; }
+    }
+
+    public class Artist
+    {
+        public string name { get; set; }
+        public string mbid { get; set; }
+        public string url { get; set; }
+        public IList<Image> image { get; set; }
+        public string streamable { get; set; }
+        public string ontour { get; set; }
+        public Stats stats { get; set; }
+        public Similar similar { get; set; }
+        public Tags tags { get; set; }
+        public Bio bio { get; set; }
+    }
+
+    public class Root
+    {
+        public Artist artist { get; set; }
+    }
+
+
+    //albums
+
+    public class Album
+    {
+        public string name { get; set; }
+        public int playcount { get; set; }
+        public string mbid { get; set; }
+        public string url { get; set; }
+        public Artist artist { get; set; }
+        public IList<Image> image { get; set; }
+
+    }
+    public class Attr
+    {
+        public string artist { get; set; }
+        public string page { get; set; }
+        public string perPage { get; set; }
+        public string totalPages { get; set; }
+        public string total { get; set; }
+
+    }
+    public class Topalbums
+    {
+        public IList<Album> album { get; set; }
+        public Attr @attr { get; set; }
+
+    }
+    public class Application
+    {
+        public Topalbums topalbums { get; set; }
+
+    }
+
+}
