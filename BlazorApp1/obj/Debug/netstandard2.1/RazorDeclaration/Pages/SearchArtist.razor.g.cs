@@ -104,9 +104,9 @@ using System.Collections.Generic;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 98 "/Users/graham/Projects/BlazorApp1/BlazorApp1/Pages/SearchArtist.razor"
+#line 106 "/Users/graham/Projects/BlazorApp1/BlazorApp1/Pages/SearchArtist.razor"
        
-    private String artist = "Nine Inch Nails";
+    private String artist = "Led Zeppelin";
     private bool found;
     private Root data;
     private Application data1;
@@ -141,7 +141,7 @@ using System.Collections.Generic;
 #line hidden
 #nullable disable
 #nullable restore
-#line 128 "/Users/graham/Projects/BlazorApp1/BlazorApp1/Pages/SearchArtist.razor"
+#line 136 "/Users/graham/Projects/BlazorApp1/BlazorApp1/Pages/SearchArtist.razor"
              for (int i = 0; i < noAlbums; i++)
             {
                 artistAlbums.Add(data1.topalbums.album[i].name);
@@ -152,7 +152,7 @@ using System.Collections.Generic;
 #line hidden
 #nullable disable
 #nullable restore
-#line 132 "/Users/graham/Projects/BlazorApp1/BlazorApp1/Pages/SearchArtist.razor"
+#line 140 "/Users/graham/Projects/BlazorApp1/BlazorApp1/Pages/SearchArtist.razor"
              
 
             found = true;

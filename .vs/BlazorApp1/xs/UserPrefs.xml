@@ -1,0 +1,41 @@
+﻿<Properties StartupConfiguration="{A5479C68-B4DE-498E-862F-D1D388470A93}|Default">
+  <MonoDevelop.Ide.ItemProperties.BlazorApp1 PreferredExecutionTarget="/Applications/Safari.app" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="BlazorApp1/wwwroot/index.html">
+    <Files>
+      <File FileName="BlazorApp1/Pages/SearchArtist.razor" Line="41" Column="150" />
+      <File FileName="BlazorApp1/Pages/Game.razor" Line="1" Column="1" />
+      <File FileName="BlazorApp1/Pages/FetchData.razor" />
+      <File FileName="BlazorApp1/Pages/Index.razor" Line="1" Column="1" />
+      <File FileName="BlazorApp1/Shared/NavMenu.razor" Line="2" Column="43" />
+      <File FileName="BlazorApp1/Shared/MainLayout.razor" Line="1" Column="1" />
+      <File FileName="BlazorApp1/wwwroot/index.html" Line="7" Column="12" />
+      <File FileName="BlazorApp1/Properties/launchSettings.json" Line="19" Column="6" />
+      <File FileName="BlazorApp1/obj/Debug/netstandard2.1/BlazorApp1.AssemblyInfo.cs" Line="19" Column="60" />
+      <File FileName="BlazorApp1/Program.cs" Line="11" Column="17" />
+      <File FileName="BlazorApp1/_Imports.razor" Line="9" Column="14" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="BlazorApp1" expanded="True">
+            <Node name="BlazorApp1" expanded="True">
+              <Node name="Pages" expanded="True" />
+              <Node name="Shared" expanded="True" />
+              <Node name="wwwroot" expanded="True">
+                <Node name="css" expanded="True" />
+                <Node name="images " expanded="True" />
+                <Node name="index.html" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

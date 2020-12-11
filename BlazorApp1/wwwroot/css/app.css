@@ -2,11 +2,52 @@
 
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: #212121;
+    color: white;
 }
 
 a, .btn-link {
     color: #0366d6;
 }
+
+.table {
+    color: white;
+    border: none;
+}
+
+.btn btn-primary .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color: #1db954 !important;
+}
+
+.btn-outline-primary {
+    background-color: #1db954 !important;
+}
+
+.artistRow{
+    border:none;
+}
+
+
+
+
+
+.similarArtistButton, .similarArtistButton:visited, .similarArtistButton:active, .similarArtistButton:focus {
+    outline: none;
+    color: white;
+    border: none;
+    background: none;
+    cursor: pointer;
+    margin: 0;
+    padding: 10px;
+}
+
+.similarArtistButton:hover {
+        background-color: #535353;
+        border-color: #535353;
+        outline: none;
+}
+
+
 
 .btn-primary {
     color: #fff;
@@ -47,11 +88,11 @@ app {
 }
 
 .sidebar {
-    background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
+    background-color: #121212
 }
 
     .sidebar .top-row {
-        background-color: rgba(0,0,0,0.4);
+        background-color: #121212;
     }
 
     .sidebar .navbar-brand {

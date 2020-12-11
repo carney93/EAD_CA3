@@ -13,8 +13,7 @@
 else
 {
     <div>
-        <label for="artist">Search For Artist</label>
-        <input id="artist" @bind="artist" />
+        <input placeholder="Search Artist" id="artist" @bind="artist" />
         <button @onclick="Lookup">
             <span class="oi oi-magnifying-glass"></span>
         </button>
@@ -24,10 +23,7 @@ else
 
     @if (found)
     {
-
         <h1> @(data.artist.name) </h1>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Click to view full Bio</button>
-
         <br />
         <br />
         <div class="container">
@@ -47,22 +43,22 @@ else
             <div class="row">
                 <div class="col-sm-5">
                     <h2>Releases</h2> <button @onclick="sort"><span class="oi oi-sort-ascending"></span></button>
-    <table class="table">
-        <tbody>
+                    <table class="table">
+                        <tbody>
 
-            @foreach (Object obj in artistAlbums)
-            {
-                <tr>
-                    <th scope="row"></th>
-                    <td>@obj</td>
+                            @foreach (Object obj in artistAlbums)
+                            {
+                                <tr>
+                                    <th scope="row"></th>
+                                    <td>@obj</td>
 
-                </tr>
-            }
+                                </tr>
+                            }
 
-        </tbody>
-    </table>
+                        </tbody>
+                    </table>
 
-</div>
+                </div>
                 <div class="col-sm-1">
                 </div>
                 <div class="col-sm-6">
@@ -73,13 +69,12 @@ else
 
                             @for (int i = 0; i < noSimilarArtists; i++)
                             {
-                            <tr>
-                                <th scope="row"></th>
-
-                                @{similarArtists.Add(@data.artist.similar.artist[i].name);}
-                                @{int j = i;}
-                                <button @onclick="@(e => goToSimilarArtist(j))">@(data.artist.similar.artist[i].name)</button>
-                            </tr>
+                                <tr>
+                                    qq
+                                    @{similarArtists.Add(@data.artist.similar.artist[i].name);}
+                                    @{int j = i;}
+                                    <button class='similarArtistButton' @onclick="@(e => goToSimilarArtist(j))">@(data.artist.similar.artist[i].name)</button>
+                                </tr>
                             }
                         </tbody>
                     </table>
@@ -90,13 +85,26 @@ else
         </div>
 
     }
+    else
+    {
+        if (artist == "")
+        {
+            <p><em>You must enter a value</em></p>
+        }
+        else 
+        {
+            <p><em>The artist you searched does not exist</em></p>
+        }
+
+
+    }
 }
 
-@errormessage
+
 
 
 @code {
-    private String artist = "Nine Inch Nails";
+    private String artist = "Led Zeppelin";
     private bool found;
     private Root data;
     private Application data1;

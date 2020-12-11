@@ -83,7 +83,7 @@ using Copify.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 33 "/Users/graham/Projects/BlazorApp1/BlazorApp1/Shared/NavMenu.razor"
+#line 28 "/Users/graham/Projects/BlazorApp1/BlazorApp1/Shared/NavMenu.razor"
        
     private bool collapseNavMenu = true;
 

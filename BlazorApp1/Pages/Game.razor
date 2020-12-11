@@ -1,7 +1,6 @@
 ﻿@page "/game"
 @inject HttpClient Http
 
-<h1>Artist Face Off</h1>
 
 @if (data1 == null)
 {
@@ -9,36 +8,120 @@
 }
 else
 {
-    <div>
-        <label for="artist1">Artist 1</label>
-        <input id="artist1" @bind="artist1" />
-        <p></p>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+        </div>
+        <div class="col-sm-4">
+            <h1>Artist Face Off</h1>
+        </div>
+        <div class="col-sm-4">
+        </div>
     </div>
-    <div>
-        <label for="artist2">Artist 2</label>
-        <input id="artist2" @bind="artist2" />
-        <p></p>
+    <div class="row">
+        <div class="col-sm-4">
+            <label for="artist1">Artist 1</label>
+            <input placeholder="Enter Artist" id="artist1" @bind="artist1" />
+            <p></p>
+        </div>
+
+        <div class="col-sm-4">
+
+        </div>
+
+        <div class="col-sm-4">
+            <label for="artist2">Artist 2</label>
+            <input placeholder="Enter Artist" id="artist2" @bind="artist2" />
+            <p></p>
+        </div>
     </div>
-    <div>
-        <button @onclick="Lookup">Lookup</button>
+
+    <div class="row">
+
+        <div class="col-sm-5">
+        </div>
+
+        <div class="col-sm-2">
+            <button @onclick="Lookup">Calculate</button>
+        </div>
+
+        <div class="col-sm-5">
+        </div>
+
     </div>
+
     <br />
 
     @if (found)
     {
-        <div>
-            Artist Name: @(winner)
+        <div class="row">
+
+            <div class="col-sm-5">
+            </div>
+
+            <div class="col-sm-2">
+                <h2>Winner:</h2>
+            </div>
+
+            <div class="col-sm-5">
+            </div>
+
         </div>
-    }  
+        <div class="row">
+
+            <div class="col-sm-5">
+            </div>
+
+            <div class="col-sm-2">
+                <h4> @(winner)</h4>
+            </div>
+
+            <div class="col-sm-5">
+            </div>
+
+        </div>
+
+
+    }
+    else
+    {
+
+        if (artist1 == "")
+        {
+            <p><em>You must enter a value in the field of artist 1</em></p>
+        }
+        else if (data1.artist == null)
+        {
+            <p><em>Artist 1 does not exist. Please enter another</em></p>
+
+        }
+
+        if (artist2 == "")
+        {
+            <p><em>You must enter a value in the field of artist 2</em></p>
+        }
+        else if (data2.artist == null)
+        {
+            <p><em>Artist 2 does not exist. Please enter another</em></p>
+        }
+
+
+
+
+    }
+
+</div>
+
 }
 
 
-@errormessage
+
 
 
 @code {
-    private String artist1 = "Nine Inch Nails";
-    private String artist2 = "Incubus";
+    private String artist1 = "Led Zeppelin";
+    private String artist2 = "The Beatles";
     private bool found;
     private String winner = "";
 
@@ -51,7 +134,7 @@ else
         try
         {
             string url1 = "http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=" + artist1 + "&api_key=e53ad041fac5d3189f2e8dffe9b6978a&format=json";
-            string url2 = "http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=" + artist2+ "&api_key=e53ad041fac5d3189f2e8dffe9b6978a&format=json";
+            string url2 = "http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=" + artist2 + "&api_key=e53ad041fac5d3189f2e8dffe9b6978a&format=json";
             data1 = await Http.GetFromJsonAsync<Root>(url1);
             data2 = await Http.GetFromJsonAsync<Root>(url2);
             found = true;
@@ -59,7 +142,7 @@ else
             int x = Int32.Parse(data1.artist.stats.playcount);
             int y = Int32.Parse(data2.artist.stats.playcount);
 
-            if ( x > y )
+            if (x > y)
             {
                 winner = artist1;
             }

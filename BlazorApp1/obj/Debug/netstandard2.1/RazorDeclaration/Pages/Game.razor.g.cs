@@ -84,10 +84,10 @@ using Copify.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 39 "/Users/graham/Projects/BlazorApp1/BlazorApp1/Pages/Game.razor"
+#line 122 "/Users/graham/Projects/BlazorApp1/BlazorApp1/Pages/Game.razor"
        
-    private String artist1 = "Nine Inch Nails";
-    private String artist2 = "Incubus";
+    private String artist1 = "Led Zeppelin";
+    private String artist2 = "The Beatles";
     private bool found;
     private String winner = "";
 
@@ -100,7 +100,7 @@ using Copify.Shared;
         try
         {
             string url1 = "http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=" + artist1 + "&api_key=e53ad041fac5d3189f2e8dffe9b6978a&format=json";
-            string url2 = "http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=" + artist2+ "&api_key=e53ad041fac5d3189f2e8dffe9b6978a&format=json";
+            string url2 = "http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=" + artist2 + "&api_key=e53ad041fac5d3189f2e8dffe9b6978a&format=json";
             data1 = await Http.GetFromJsonAsync<Root>(url1);
             data2 = await Http.GetFromJsonAsync<Root>(url2);
             found = true;
@@ -108,7 +108,7 @@ using Copify.Shared;
             int x = Int32.Parse(data1.artist.stats.playcount);
             int y = Int32.Parse(data2.artist.stats.playcount);
 
-            if ( x > y )
+            if (x > y)
             {
                 winner = artist1;
             }
