@@ -1,7 +1,7 @@
 {
   "FilesToCompress": [
     {
-      "InputSource": "obj\/Debug\/netstandard2.1\/integrity\/meYBPMY66EoYF3U6Zp5oCAiP8mj1KJEBrmNK0MLac-U=.hash",
+      "InputSource": "obj\/Debug\/netstandard2.1\/integrity\/XCFVFhpKIS0OjCYNV8EEsfK32SeWiynvEJf5BwRFdG0=.hash",
       "Source": "\/Users\/graham\/Projects\/BlazorApp1\/BlazorApp1\/obj\/Debug\/netstandard2.1\/blazor\/unlinked\/Copify.dll",
       "Target": "obj\/Debug\/netstandard2.1\/compressed\/_framework\/_bin\/Copify.dll.gz"
     },
@@ -261,7 +261,7 @@
       "Target": "obj\/Debug\/netstandard2.1\/compressed\/_framework\/_bin\/Microsoft.JSInterop.WebAssembly.dll.gz"
     },
     {
-      "InputSource": "obj\/Debug\/netstandard2.1\/integrity\/X2E9BxLuIZrauW1gFib3LWhu7sDDLm0KHQhSEdtDKRA=.hash",
+      "InputSource": "obj\/Debug\/netstandard2.1\/integrity\/KuDDSU_TgJDZiUxMePsr51Fu66xq4u7tE4YApf0xW-I=.hash",
       "Source": "\/Users\/graham\/Projects\/BlazorApp1\/BlazorApp1\/obj\/Debug\/netstandard2.1\/blazor\/unlinked\/Copify.pdb",
       "Target": "obj\/Debug\/netstandard2.1\/compressed\/_framework\/_bin\/Copify.pdb.gz"
     },
@@ -286,7 +286,7 @@
       "Target": "obj\/Debug\/netstandard2.1\/compressed\/_framework\/blazor.webassembly.js.gz"
     },
     {
-      "InputSource": "obj\/Debug\/netstandard2.1\/integrity\/N_jKYqzPe6-Xo2k7hNr8wol-jRx5x-yuFeZVwRwQHvc=.hash",
+      "InputSource": "obj\/Debug\/netstandard2.1\/integrity\/iWsq-T8TwW6fPf5FC2e-xqnsL9HPSlxvXdSUUDe-M-A=.hash",
       "Source": "\/Users\/graham\/Projects\/BlazorApp1\/BlazorApp1\/obj\/Debug\/netstandard2.1\/blazor\/blazor.boot.json",
       "Target": "obj\/Debug\/netstandard2.1\/compressed\/_framework\/blazor.boot.json.gz"
     }

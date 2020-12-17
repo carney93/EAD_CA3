@@ -95,6 +95,13 @@ using System.Collections.Generic;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 6 "/Users/graham/Projects/BlazorApp1/BlazorApp1/Pages/SearchArtist.razor"
+using System.ComponentModel.DataAnnotations;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/searchartist")]
     public partial class SearchArtist : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -104,13 +111,14 @@ using System.Collections.Generic;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 106 "/Users/graham/Projects/BlazorApp1/BlazorApp1/Pages/SearchArtist.razor"
+#line 107 "/Users/graham/Projects/BlazorApp1/BlazorApp1/Pages/SearchArtist.razor"
        
+
+    [Required]
     private String artist = "Led Zeppelin";
     private bool found;
     private Root data;
     private Application data1;
-    private string errormessage;
     List<string> similarArtists = new List<string>();
 
     private int noAlbums;
@@ -141,7 +149,7 @@ using System.Collections.Generic;
 #line hidden
 #nullable disable
 #nullable restore
-#line 136 "/Users/graham/Projects/BlazorApp1/BlazorApp1/Pages/SearchArtist.razor"
+#line 138 "/Users/graham/Projects/BlazorApp1/BlazorApp1/Pages/SearchArtist.razor"
              for (int i = 0; i < noAlbums; i++)
             {
                 artistAlbums.Add(data1.topalbums.album[i].name);
@@ -152,16 +160,14 @@ using System.Collections.Generic;
 #line hidden
 #nullable disable
 #nullable restore
-#line 140 "/Users/graham/Projects/BlazorApp1/BlazorApp1/Pages/SearchArtist.razor"
+#line 142 "/Users/graham/Projects/BlazorApp1/BlazorApp1/Pages/SearchArtist.razor"
              
 
             found = true;
-            errormessage = String.Empty;
         }
         catch (Exception e)
         {
             found = false;
-            errormessage = e.Message;
         }
     }
 

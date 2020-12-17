@@ -1,13 +1,18 @@
 ﻿<Properties StartupConfiguration="{A5479C68-B4DE-498E-862F-D1D388470A93}|Default">
   <MonoDevelop.Ide.ItemProperties.Copify PreferredExecutionTarget="/Applications/Safari.app" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="BlazorApp1/Pages/Game.razor">
+    <Files>
+      <File FileName="BlazorApp1/Pages/SearchArtist.razor" Line="146" Column="17" />
+      <File FileName="BlazorApp1/Pages/Game.razor" Line="13" Column="1" />
+      <File FileName="BlazorApp1/wwwroot/css/app.css" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Copify" expanded="True">
             <Node name="Copify" expanded="True">
               <Node name="Pages" expanded="True">
-                <Node name="SearchArtist.razor" selected="True" />
+                <Node name="Game.razor" selected="True" />
               </Node>
               <Node name="Shared" expanded="True" />
               <Node name="wwwroot" expanded="True">

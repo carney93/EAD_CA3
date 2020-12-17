@@ -3,6 +3,7 @@
 @using System.Runtime.Serialization;
 @using System.Collections;
 @using System.Collections.Generic;
+@using System.ComponentModel.DataAnnotations;
 
 
 
@@ -91,7 +92,7 @@ else
         {
             <p><em>You must enter a value</em></p>
         }
-        else 
+        else
         {
             <p><em>The artist you searched does not exist</em></p>
         }
@@ -104,11 +105,12 @@ else
 
 
 @code {
+
+    [Required]
     private String artist = "Led Zeppelin";
     private bool found;
     private Root data;
     private Application data1;
-    private string errormessage;
     List<string> similarArtists = new List<string>();
 
     private int noAlbums;
@@ -140,12 +142,10 @@ else
             }
 
             found = true;
-            errormessage = String.Empty;
         }
         catch (Exception e)
         {
             found = false;
-            errormessage = e.Message;
         }
     }
 

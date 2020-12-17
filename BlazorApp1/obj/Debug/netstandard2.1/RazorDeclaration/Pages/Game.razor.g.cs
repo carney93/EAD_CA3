@@ -93,7 +93,7 @@ using Copify.Shared;
 
     private Root data1;
     private Root data2;
-    private string errormessage;
+
 
     private async Task GetArtistAsync()
     {
@@ -104,7 +104,6 @@ using Copify.Shared;
             data1 = await Http.GetFromJsonAsync<Root>(url1);
             data2 = await Http.GetFromJsonAsync<Root>(url2);
             found = true;
-            errormessage = String.Empty;
             int x = Int32.Parse(data1.artist.stats.playcount);
             int y = Int32.Parse(data2.artist.stats.playcount);
 
@@ -121,7 +120,6 @@ using Copify.Shared;
         catch (Exception e)
         {
             found = false;
-            errormessage = e.Message;
         }
     }
 
