@@ -111,10 +111,10 @@ using System.ComponentModel.DataAnnotations;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 107 "/Users/graham/Projects/BlazorApp1/BlazorApp1/Pages/SearchArtist.razor"
+#line 106 "/Users/graham/Projects/BlazorApp1/BlazorApp1/Pages/SearchArtist.razor"
        
 
-    [Required]
+
     private String artist = "Led Zeppelin";
     private bool found;
     private Root data;
@@ -149,10 +149,14 @@ using System.ComponentModel.DataAnnotations;
 #line hidden
 #nullable disable
 #nullable restore
-#line 138 "/Users/graham/Projects/BlazorApp1/BlazorApp1/Pages/SearchArtist.razor"
+#line 137 "/Users/graham/Projects/BlazorApp1/BlazorApp1/Pages/SearchArtist.razor"
              for (int i = 0; i < noAlbums; i++)
             {
-                artistAlbums.Add(data1.topalbums.album[i].name);
+                if(data1.topalbums.album[i].name != "(null)")
+                {
+                    artistAlbums.Add(data1.topalbums.album[i].name);
+                }
+
 
             }
 
@@ -160,7 +164,7 @@ using System.ComponentModel.DataAnnotations;
 #line hidden
 #nullable disable
 #nullable restore
-#line 142 "/Users/graham/Projects/BlazorApp1/BlazorApp1/Pages/SearchArtist.razor"
+#line 145 "/Users/graham/Projects/BlazorApp1/BlazorApp1/Pages/SearchArtist.razor"
              
 
             found = true;

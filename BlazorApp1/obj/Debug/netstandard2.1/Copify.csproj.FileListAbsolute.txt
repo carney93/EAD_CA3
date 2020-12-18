@@ -353,6 +353,6 @@
 /Users/graham/Projects/BlazorApp1/BlazorApp1/obj/Debug/netstandard2.1/Copify.csproj.CopyComplete
 /Users/graham/Projects/BlazorApp1/BlazorApp1/obj/Debug/netstandard2.1/Copify.dll
 /Users/graham/Projects/BlazorApp1/BlazorApp1/obj/Debug/netstandard2.1/Copify.pdb
-/Users/graham/Projects/BlazorApp1/BlazorApp1/obj/Debug/netstandard2.1/integrity/XCFVFhpKIS0OjCYNV8EEsfK32SeWiynvEJf5BwRFdG0=.hash
-/Users/graham/Projects/BlazorApp1/BlazorApp1/obj/Debug/netstandard2.1/integrity/KuDDSU_TgJDZiUxMePsr51Fu66xq4u7tE4YApf0xW-I=.hash
-/Users/graham/Projects/BlazorApp1/BlazorApp1/obj/Debug/netstandard2.1/integrity/iWsq-T8TwW6fPf5FC2e-xqnsL9HPSlxvXdSUUDe-M-A=.hash
+/Users/graham/Projects/BlazorApp1/BlazorApp1/obj/Debug/netstandard2.1/integrity/On9bbWXE6wm9YDarR26yIU7GxzwEzk4kpDUmJqnJnRI=.hash
+/Users/graham/Projects/BlazorApp1/BlazorApp1/obj/Debug/netstandard2.1/integrity/i9DyMzGEQMGfOrsBkV5l4Sagybq_PNUrBTyGsgCMjjY=.hash
+/Users/graham/Projects/BlazorApp1/BlazorApp1/obj/Debug/netstandard2.1/integrity/A9r-WzWJEzs_nNo_UnFZJe_2JHq4qwIULcgioZ0sRJM=.hash

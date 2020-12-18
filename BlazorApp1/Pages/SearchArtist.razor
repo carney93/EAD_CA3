@@ -71,7 +71,6 @@ else
                             @for (int i = 0; i < noSimilarArtists; i++)
                             {
                                 <tr>
-                                    qq
                                     @{similarArtists.Add(@data.artist.similar.artist[i].name);}
                                     @{int j = i;}
                                     <button class='similarArtistButton' @onclick="@(e => goToSimilarArtist(j))">@(data.artist.similar.artist[i].name)</button>
@@ -106,7 +105,7 @@ else
 
 @code {
 
-    [Required]
+
     private String artist = "Led Zeppelin";
     private bool found;
     private Root data;
@@ -137,7 +136,12 @@ else
 
             @for (int i = 0; i < noAlbums; i++)
             {
-                artistAlbums.Add(data1.topalbums.album[i].name);
+                //quite a few bands had (null) in their album lists so that removes them
+                if(data1.topalbums.album[i].name != "(null)")
+                {
+                    artistAlbums.Add(data1.topalbums.album[i].name);
+                }
+
 
             }
 

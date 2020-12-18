@@ -1649,7 +1649,7 @@
       "outputPath": "/Users/graham/Projects/BlazorApp1/BlazorApp1/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/graham/.config/NuGet/NuGet.Config"
+        "/Users/graham/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.1"
